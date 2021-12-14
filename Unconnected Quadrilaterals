@@ -1,0 +1,42 @@
+#include<GL/glut.h>
+int p1[] = { 10, 20 };
+int p2[] = { 20, 10 };
+int p3[] = { 30, 20 };
+int p4[] = { 20, 30 };
+int p5[] = { 30, 20 };
+int p6[] = { 40, 10 };
+int p7[] = { 50, 20 };
+int p8[] = { 40, 30 };
+void init(void)
+{
+ glClearColor(0.0, 0.0, 0.0, 1.0);
+ glMatrixMode(GL_PROJECTION);
+ gluOrtho2D(0.0, 250.0, 0.0, 200.0);
+}
+void twounconnectedquads(void)
+{
+ glClear(GL_COLOR_BUFFER_BIT);
+ glColor3f(1.0, 0.0, 0.0);
+ glBegin(GL_QUADS);
+ glVertex2iv(p1);
+ glVertex2iv(p2);
+ glVertex2iv(p3);
+ glVertex2iv(p4);
+ glVertex2iv(p5);
+ glVertex2iv(p6);
+ glVertex2iv(p7);
+ glVertex2iv(p8);
+ glEnd();
+ glFlush();
+}
+int main(int argc, char** argv)
+{
+ glutInit(&argc, argv);
+ glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+ glutInitWindowSize(500, 400);
+ glutInitWindowPosition(0, 0);
+ glutCreateWindow("Two_Unonnected_Quads");
+ init();
+ glutDisplayFunc(twounconnectedquads);
+ glutMainLoop();
+}
